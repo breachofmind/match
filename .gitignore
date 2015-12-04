@@ -1,0 +1,9 @@
+.sass-cache
+.idea
+assets/js/lib
+node_modules
+vendor
+.env
+composer.lock
+memory-game.iml
+.DS_Store

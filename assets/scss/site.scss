@@ -1,0 +1,34 @@
+/**
+ * The Site stylesheet.
+ */
+@import 'compass';
+
+@import 'mixins';
+@import 'settings';
+@import 'normalize';
+@import 'foundation';
+
+body {
+	overflow:hidden;
+}
+
+.flex-row {
+	display:flex;
+	flex-direction: row;
+}
+
+.flex-content {
+	width:100%;
+}
+
+.noselect {
+	user-select:none;
+}
+
+#Application {height:100vh;}
+
+.game-piece {
+	border:2px solid white;
+	&.selected {border:2px solid red;}
+	&.matched {border:2px solid green;}
+}

@@ -1,0 +1,10 @@
+{
+  "name": "memory-game",
+  "version": "0.0.1",
+  "private": "true",
+  "dependencies": {
+    "foundation": "zurb/bower-foundation",
+    "angular": "~1.4.7",
+    "angular-sanitize": "~1.4.7"
+  }
+}

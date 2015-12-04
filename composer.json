@@ -1,0 +1,13 @@
+{
+    "name": "breachofmind/memorygame",
+    "description": "Interactive game for Brightstar",
+    "authors": [
+        {
+            "name": "Mike Adamczyk",
+            "email": "mike.adamczyk@brightstar.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "~1.0"
+    }
+}

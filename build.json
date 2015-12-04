@@ -1,0 +1,26 @@
+{
+  "site" : {
+
+    "name" : "site",
+    "description" : "The default site build configuration.",
+    "resourcePath": "assets/",
+    "buildPath" : "public/",
+    "importPath" : "assets/js/lib/foundation/scss",
+
+    "src" : [
+      "url.js",
+      "app.js"
+    ],
+    "lib" : [
+      "lib/modernizr/modernizr.js",
+      "lib/jquery/dist/jquery.min.js",
+      "lib/jquery.cookie/jquery.cookie.js",
+      "lib/fastclick/lib/fastclick.js",
+      "lib/foundation/js/foundation.min.js",
+      "lib/angular/angular.min.js",
+      "lib/angular-sanitize/angular-sanitize.min.js"
+    ],
+
+    "css" : ["site.css"]
+  }
+}
