@@ -18,7 +18,7 @@
 </head>
 
 
-<body ng-app="memorygame">
+<body ng-app="memorygame" ng-controller="GameCtrl as game" ng-class="{solved:game.solved}">
 
 <!--[if lte IE 8]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>

@@ -190,12 +190,12 @@ URL.prototype.toString = function() {
 var app = {
     images: [
     // Images to use.
-        'http://placehold.it/200x200?text=id1',
-        'http://placehold.it/200x200?text=id2',
-        'http://placehold.it/200x200?text=id3',
-        'http://placehold.it/200x200?text=id4',
-        'http://placehold.it/200x200?text=id5',
-        'http://placehold.it/200x200?text=id6'
+        'http://placehold.it/200x200?text=1',
+        'http://placehold.it/200x200?text=2',
+        'http://placehold.it/200x200?text=3',
+        'http://placehold.it/200x200?text=4',
+        'http://placehold.it/200x200?text=5',
+        'http://placehold.it/200x200?text=6'
     ]
 };
 
@@ -211,6 +211,21 @@ var game = angular.module('memorygame', ['ngSanitize'])
 
         var selections = [];
 
+        // Number of tries by the user.
+        this.tries = 0;
+
+        // Is the game solved yet?
+        this.solved = false;
+
+        this.accuracy = function()
+        {
+            var count = app.images.length;
+            var tries = game.tries;
+            var matches = game.board.matches;
+            if (!tries) return "-";
+            return (matches/tries * 100).toFixed(2)+"%";
+        };
+
         /**
          * What happens when you select a game piece?
          * @param piece {app.GamePiece} selected
@@ -218,7 +233,7 @@ var game = angular.module('memorygame', ['ngSanitize'])
         $scope.select = function(piece)
         {
             // Don't continue if re-selecting a piece or if a piece is already matched.
-            if (piece.matched || piece.selected) return;
+            if (piece.matched || piece.selected || game.solved) return;
 
             piece.selected = true;
 
@@ -226,6 +241,7 @@ var game = angular.module('memorygame', ['ngSanitize'])
 
             // When we've made two selections, check them.
             if (selections.length==2) {
+                game.tries ++;
                 var a = selections[0], b = selections[1];
                 // See if they match.
                 if (! a.matches(b)) {
@@ -240,9 +256,8 @@ var game = angular.module('memorygame', ['ngSanitize'])
                 selections = [];
             }
 
-            if (game.board.solved()) {
-                alert('you won!');
-            }
+            // If solved, add a class to the body which shows the final message.
+            game.solved = game.board.solved();
         }
     }]);
 
@@ -284,6 +299,7 @@ app.GamePiece = function (id, type, image)
     this.matches = function(piece)
     {
         if (this.id === piece.id) {
+            app.GamePieceCollection.instance.matches ++;
             return this.matched = piece.matched = true;
         }
         return false;
@@ -297,7 +313,12 @@ app.GamePiece = function (id, type, image)
  */
 app.GamePieceCollection = function (items)
 {
+    app.GamePieceCollection.instance = this;
+
     this.items = items || [];
+
+    // Total number of matching pairs.
+    this.matches = 0;
 
     /**
      * Randomize the item array.
@@ -324,7 +345,6 @@ app.GamePieceCollection = function (items)
         }
         return true;
     };
-
 };
 
 /**

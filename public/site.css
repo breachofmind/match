@@ -10174,41 +10174,158 @@ th.hide-for-touch {
     display: table-cell !important;
   }
 }
-/* line 11, ../assets/scss/site.scss */
+/* line 12, ../assets/scss/site.scss */
 body {
   overflow: hidden;
 }
 
-/* line 15, ../assets/scss/site.scss */
+/* line 16, ../assets/scss/site.scss */
 .flex-row {
   display: flex;
   flex-direction: row;
 }
 
-/* line 20, ../assets/scss/site.scss */
+/* line 21, ../assets/scss/site.scss */
 .flex-content {
   width: 100%;
 }
 
-/* line 24, ../assets/scss/site.scss */
+/* line 25, ../assets/scss/site.scss */
 .noselect {
   user-select: none;
 }
 
-/* line 28, ../assets/scss/site.scss */
+/* line 29, ../assets/scss/site.scss */
 #Application {
   height: 100vh;
 }
 
-/* line 30, ../assets/scss/site.scss */
-.game-piece {
-  border: 2px solid white;
-}
 /* line 32, ../assets/scss/site.scss */
-.game-piece.selected {
-  border: 2px solid red;
+.aspect {
+  position: relative;
 }
+
 /* line 33, ../assets/scss/site.scss */
-.game-piece.matched {
-  border: 2px solid green;
+.aspect-1-1 {
+  padding-bottom: 100%;
+}
+
+/* entire container, keeps perspective */
+/* line 36, ../assets/scss/site.scss */
+.piece-container {
+  perspective: 1000;
+  cursor: pointer;
+  width: 25%;
+  float: left;
+}
+/* line 41, ../assets/scss/site.scss */
+.piece-container img {
+  width: 100%;
+  height: auto;
+}
+/* line 42, ../assets/scss/site.scss */
+.piece-container.matched .piece, .piece-container.selected .piece {
+  transform: rotateY(180deg);
+}
+
+/* line 47, ../assets/scss/site.scss */
+.piece, .front, .back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* line 52, ../assets/scss/site.scss */
+.front, .back {
+  backface-visibility: hidden;
+}
+
+/* line 56, ../assets/scss/site.scss */
+.front {
+  z-index: 2;
+  transform: rotateY(0deg);
+}
+
+/* line 61, ../assets/scss/site.scss */
+.back {
+  transform: rotateY(180deg);
+}
+
+/* line 65, ../assets/scss/site.scss */
+.piece {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+}
+/* line 68, ../assets/scss/site.scss */
+.piece > div {
+  padding: 2px;
+}
+
+/* line 71, ../assets/scss/site.scss */
+#GameBoard {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+/* line 77, ../assets/scss/site.scss */
+.matched {
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-name: success;
+}
+
+/* line 83, ../assets/scss/site.scss */
+#SuccessMessage {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.5);
+  z-index: 500;
+}
+
+/* line 88, ../assets/scss/site.scss */
+body.solved #SuccessMessage {
+  display: block;
+}
+
+@keyframes success {
+  from, 11.1%, to {
+    -webkit-transform: none;
+    transform: none;
+  }
+  22.2% {
+    -webkit-transform: skewX(-12.5deg) skewY(-12.5deg);
+    transform: skewX(-12.5deg) skewY(-12.5deg);
+  }
+  33.3% {
+    -webkit-transform: skewX(6.25deg) skewY(6.25deg);
+    transform: skewX(6.25deg) skewY(6.25deg);
+  }
+  44.4% {
+    -webkit-transform: skewX(-3.125deg) skewY(-3.125deg);
+    transform: skewX(-3.125deg) skewY(-3.125deg);
+  }
+  55.5% {
+    -webkit-transform: skewX(1.5625deg) skewY(1.5625deg);
+    transform: skewX(1.5625deg) skewY(1.5625deg);
+  }
+  66.6% {
+    -webkit-transform: skewX(-0.78125deg) skewY(-0.78125deg);
+    transform: skewX(-0.78125deg) skewY(-0.78125deg);
+  }
+  77.7% {
+    -webkit-transform: skewX(0.39063deg) skewY(0.39063deg);
+    transform: skewX(0.39063deg) skewY(0.39063deg);
+  }
+  88.8% {
+    -webkit-transform: skewX(-0.19531deg) skewY(-0.19531deg);
+    transform: skewX(-0.19531deg) skewY(-0.19531deg);
+  }
 }
