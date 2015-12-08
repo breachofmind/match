@@ -3,12 +3,12 @@
 var app = {
     images: [
     // Images to use.
-        'http://placehold.it/200x200?text=1',
-        'http://placehold.it/200x200?text=2',
-        'http://placehold.it/200x200?text=3',
-        'http://placehold.it/200x200?text=4',
-        'http://placehold.it/200x200?text=5',
-        'http://placehold.it/200x200?text=6'
+        '/public/images/icon_phone-1.svg',
+        '/public/images/icon_phone-2.svg',
+        '/public/images/icon_phone-3.svg',
+        '/public/images/icon_phone-4.svg',
+        '/public/images/icon_phone-5.svg',
+        '/public/images/icon_phone-6.svg'
     ]
 };
 
@@ -71,8 +71,20 @@ var game = angular.module('memorygame', ['ngSanitize'])
 
             // If solved, add a class to the body which shows the final message.
             game.solved = game.board.solved();
+        };
+
+        /**
+         * Reset the game.
+         */
+        this.reset = function()
+        {
+            this.tries = 0;
+            this.solved = false;
+            selections = [];
+            game.board.reset($timeout);
         }
     }]);
+
 
 /**
  * This object represents one game piece.
@@ -116,7 +128,16 @@ app.GamePiece = function (id, type, image)
             return this.matched = piece.matched = true;
         }
         return false;
-    }
+    };
+
+    /**
+     * Reset the piece.
+     */
+    this.reset = function()
+    {
+        this.matched = false;
+        this.selected = false;
+    };
 };
 
 /**
@@ -158,6 +179,23 @@ app.GamePieceCollection = function (items)
         }
         return true;
     };
+
+    /**
+     * Reset and shuffle the game.
+     */
+    this.reset = function($timeout)
+    {
+        this.matches = 0;
+        for (var i=0; i<this.items.length; i++) {
+            this.items[i].reset();
+        }
+        // Wait for the animation to run
+        $timeout(function(){
+            app.GamePieceCollection.instance.shuffle();
+        },500);
+
+    }
+
 };
 
 /**

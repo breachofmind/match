@@ -10217,18 +10217,19 @@ body {
   cursor: pointer;
   width: 25%;
   float: left;
+  margin-bottom: 20px;
 }
-/* line 41, ../assets/scss/site.scss */
+/* line 42, ../assets/scss/site.scss */
 .piece-container img {
   width: 100%;
   height: auto;
 }
-/* line 42, ../assets/scss/site.scss */
+/* line 43, ../assets/scss/site.scss */
 .piece-container.matched .piece, .piece-container.selected .piece {
   transform: rotateY(180deg);
 }
 
-/* line 47, ../assets/scss/site.scss */
+/* line 48, ../assets/scss/site.scss */
 .piece, .front, .back {
   position: absolute;
   top: 0;
@@ -10237,33 +10238,63 @@ body {
   bottom: 0;
 }
 
-/* line 52, ../assets/scss/site.scss */
+/* line 53, ../assets/scss/site.scss */
 .front, .back {
   backface-visibility: hidden;
 }
 
-/* line 56, ../assets/scss/site.scss */
+/* line 57, ../assets/scss/site.scss */
 .front {
   z-index: 2;
   transform: rotateY(0deg);
 }
 
-/* line 61, ../assets/scss/site.scss */
+/* line 62, ../assets/scss/site.scss */
 .back {
   transform: rotateY(180deg);
 }
 
-/* line 65, ../assets/scss/site.scss */
+/* line 66, ../assets/scss/site.scss */
 .piece {
   transition: 0.6s;
   transform-style: preserve-3d;
 }
-/* line 68, ../assets/scss/site.scss */
+/* line 69, ../assets/scss/site.scss */
 .piece > div {
-  padding: 2px;
+  padding: 5px;
 }
 
-/* line 71, ../assets/scss/site.scss */
+/* line 72, ../assets/scss/site.scss */
+.image-container {
+  background: #c7202e;
+  border-radius: 50%;
+}
+/* line 75, ../assets/scss/site.scss */
+.image-container.color-0 {
+  background: #8f2e57;
+}
+/* line 76, ../assets/scss/site.scss */
+.image-container.color-1 {
+  background: #3c153b;
+}
+/* line 77, ../assets/scss/site.scss */
+.image-container.color-2 {
+  background: #fbb03b;
+}
+/* line 78, ../assets/scss/site.scss */
+.image-container.color-3 {
+  background: #37b34a;
+}
+/* line 79, ../assets/scss/site.scss */
+.image-container.color-4 {
+  background: #76cdda;
+}
+/* line 80, ../assets/scss/site.scss */
+.image-container.color-5 {
+  background: #1f8380;
+}
+
+/* line 83, ../assets/scss/site.scss */
 #GameBoard {
   width: 100%;
   max-width: 600px;
@@ -10271,14 +10302,23 @@ body {
   padding: 30px;
 }
 
-/* line 77, ../assets/scss/site.scss */
+/* line 89, ../assets/scss/site.scss */
+#Score {
+  padding: 15px;
+}
+/* line 91, ../assets/scss/site.scss */
+#Score p {
+  margin: 0;
+}
+
+/* line 94, ../assets/scss/site.scss */
 .matched {
   animation-duration: 1s;
   animation-iteration-count: 1;
   animation-name: success;
 }
 
-/* line 83, ../assets/scss/site.scss */
+/* line 100, ../assets/scss/site.scss */
 #SuccessMessage {
   display: none;
   position: fixed;
@@ -10290,7 +10330,7 @@ body {
   z-index: 500;
 }
 
-/* line 88, ../assets/scss/site.scss */
+/* line 106, ../assets/scss/site.scss */
 body.solved #SuccessMessage {
   display: block;
 }

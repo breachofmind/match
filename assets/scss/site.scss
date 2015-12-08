@@ -38,6 +38,7 @@ body {
 	cursor:pointer;
 	width:25%;
 	float:left;
+	margin-bottom:20px;
 	img {width:100%; height:auto;}
 	&.matched .piece, &.selected .piece {
 		transform: rotateY(180deg);
@@ -65,13 +66,29 @@ body {
 .piece {
 	transition: 0.6s;
 	transform-style: preserve-3d;
-	>div {padding:2px;}
+	>div {padding:5px;}
+}
+
+.image-container {
+	background:#c7202e;
+	border-radius:50%;
+	&.color-0 {background:#8f2e57;}
+	&.color-1 {background:#3c153b;}
+	&.color-2 {background:#fbb03b;}
+	&.color-3 {background:#37b34a;}
+	&.color-4 {background:#76cdda;}
+	&.color-5 {background:#1f8380;}
 }
 
 #GameBoard {
 	width:100%; max-width:600px;
 	margin:0 auto;
 	padding:30px;
+}
+
+#Score {
+	padding:15px;
+	p {margin:0;}
 }
 
 .matched {
@@ -85,6 +102,7 @@ body {
 	position:fixed; top:0; left:0; right:0; bottom:0;
 	background:rgba(255,255,255,0.5); z-index: 500;
 }
+
 body.solved #SuccessMessage {
 	display:block;
 }
