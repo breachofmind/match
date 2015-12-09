@@ -189,7 +189,7 @@ app.GamePieceCollection = function (items)
         for (var i=0; i<this.items.length; i++) {
             this.items[i].reset();
         }
-        // Wait for the animation to run
+        // Wait for the pieces to turn over, then shuffle
         $timeout(function(){
             app.GamePieceCollection.instance.shuffle();
         },500);
